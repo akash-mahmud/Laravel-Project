@@ -79,7 +79,23 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="{{route('categories.index')}}">Categories</a>
-            <a class="collapse-item" href="{{route('products.index')}}">Products</a>
+            <a class="collapse-item" href="{{url('products')}}">Products</a>
+            <a class="collapse-item" href="{{route('stocks')}}">Stocks</a>
+          </div>
+        </div>
+      </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true" aria-controls="collapseReport">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Reports</span>
+        </a>
+        <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{route('reports.sales')}}">Sales</a>
+            <a class="collapse-item" href="{{route('reports.purchase')}}">Purchases</a>
+            <a class="collapse-item" href="{{route('stocks')}}">Payments</a>
+            <a class="collapse-item" href="{{route('stocks')}}">Receipts</a>
           </div>
         </div>
       </li>

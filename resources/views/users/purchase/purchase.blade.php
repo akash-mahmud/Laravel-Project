@@ -15,11 +15,16 @@
             <th>Challen No</th>
             <th>Customer</th>
             <th>Date</th>
+            <th>Items</th>
             <th>Total</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
+                  <?php 
+		          		$totalItem = 0;
+		          		$grandTotal = 0;
+		          	?>
           @foreach($user ->purchases as $purchase)
 
           <tr>
@@ -27,17 +32,32 @@
             <td>{{$purchase -> challan_no }}</td>
             <td>{{$user -> name }}</td>
             <td>{{$purchase ->date}}</td>
-            <td>400</td>
+            <td>
+          <?php 
+            $itemQty = $purchase->items()->sum('quantity');
+            $totalItem += $itemQty;
+            echo $itemQty;
+           ?>
+            </td>
+            <td>
+              <?php 
+                $total = $purchase->items()->sum('total');
+                $grandTotal += $total;
+                echo $total;
+                ?>
+            </td>
 
 
-            <td class="custom">
-              <form action="{{route('users.destroy',['user' => $user->id ])}}" method="POST">
+            <td >
+              <form action="{{route('user.purchase.destroy',['id' => $user->id , 'invoice_id' => $purchase ->id  ])}}" method="POST">
 
-                <a class="btn btn-primary " href="{{route('users.show',['user' => $user->id])}}"><i class="fa fa-eye"></i> </a>
-
+                <a class="btn btn-primary " href="{{route('user.purchase.invoice_details',['id' => $user->id , 'invoice_id' => $purchase ->id])}}"><i class="fa fa-eye"></i> </a>
+                @if($itemQty == 0)
                 @csrf
                 @method('DELETE')
-                <button onclick="return confirm('Are you sure ?')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
+                <button onclick="return confirm('Are you sure ?')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i>
+                </button>
+                @endif
               </form>
             </td>
           </tr>

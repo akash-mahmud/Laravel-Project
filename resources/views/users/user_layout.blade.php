@@ -1,6 +1,8 @@
 @extends('layout.main')
 
+
 @section('main_content')
+
 
 <div class="row clearfix page_header">
 
@@ -9,24 +11,20 @@
     <a href="{{url('users/create')}}" class="btn btn-danger"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
   </div>
   <div class="col-md-8 text-right mb-3">
-
-
-
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newPayments">
       <i class="fa fa-plus"></i> New Payments</button>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newReceipt">
       <i class="fa fa-plus"></i> New Receipt</button>
     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newSale">
       <i class="fa fa-plus"></i> New Sale</button>
+      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newPurchase">
+      <i class="fa fa-plus"></i> New Purchase</button>
+  </div>
   </div>
 </div>
 
+@yield('user_card')
 @include('users.user_layout_content')
-
-
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="newPayments" tabindex="-1" role="dialog" aria-labelledby="newPaymentsModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -185,6 +183,64 @@
 </div>
 
 </div>
+
+
+{{-- Sale Purchase --}}
+
+<!-- Modal -->
+<div class="modal fade" id="newPurchase" tabindex="-1" role="dialog" aria-labelledby="newPurchaseModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    {!! Form::open(['route' => ['user.purchase.store', $user->id],'method'=> 'post']) !!}
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newSaleModalLabel">New Purchase Invoice</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="date" class="col-sm-3 col-form-label">Date</label>
+          <div class="col-sm-9">
+
+            {!! Form::date('date', Null, ['class' => 'form-control','id'=>'date','placeholder' => 'date', 'required']) !!}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="challan_no" class="col-sm-3 col-form-label">Challan No.</label>
+          <div class="col-sm-9">
+
+            {!! Form::text('challan_no', Null, ['class' => 'form-control','id'=>'challan_no','placeholder' => 'challan no']) !!}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="note" class="col-sm-3 col-form-label">Note</label>
+          <div class="col-sm-9">
+
+            {!! Form::textarea('note', Null, ['class' => 'form-control','id'=>'note', 'rows' => '3','placeholder' => 'note']) !!}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary mt-1 btn-md">Submit</button>
+      </div>
+    </div>
+    {!! Form::close() !!}
+  </div>
+</div>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+
 
 
 

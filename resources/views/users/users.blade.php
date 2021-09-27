@@ -44,16 +44,16 @@
               <form action="{{route('users.destroy',['user' => $user->id ])}}" method="POST">
                 <a class="btn btn-primary " href="{{route('users.edit',['user' => $user->id])}}"><i class="fa fa-edit"></i> </a>
                 <a class="btn btn-primary " href="{{route('users.show',['user' => $user->id])}}"><i class="fa fa-eye"></i> </a>
-                @if($users->sales()->count() == 0
+                {{-- @if($users->sales()->count() == 0
                 && $users->purchases()->count() == 0
                 && $users->receipts()->count() == 0
                 && $users->payments()->count() == 0
-                )
+                ) --}}
 
                 @csrf
                 @method('DELETE')
                 <button onclick="return confirm('Are you sure ?')" type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> </button>
-                @endif
+                {{-- @endif --}}
               </form>
             </td>
           </tr>

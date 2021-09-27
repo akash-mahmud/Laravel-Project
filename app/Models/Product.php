@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\PurchaseItem;
+use App\Models\SaleItem;
 class Product extends Model
 {
     use HasFactory;
@@ -14,6 +15,18 @@ class Product extends Model
     {
 
         return $this->belongsTo(Category::class);
+    }
+
+    public function purchaseItems()
+    {
+
+        return $this->hasMany(PurchaseItem::class);
+    }
+
+    public function saleItems()
+    {
+
+        return $this->hasMany(SaleItem::class);
     }
 
     public static function arrayForSelect()

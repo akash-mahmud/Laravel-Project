@@ -11,15 +11,15 @@ class SaleItem extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['sale_invoice_id', 'price', 'quantity', 'product_id', 'total'];
     public function invoice()
     {
-        return $this->belongsTo(SaleInvoice::class);
+        return $this->belongsTo(SaleInvoice::class , 'sale_invoice_id','id');
     }
 
     public function product()
     {
         return $this->belongsTo(Product::class);
     }
-    protected $fillable = ['sale_invoice_id', 'price', 'quantity', 'product_id', 'total'];
 
 }

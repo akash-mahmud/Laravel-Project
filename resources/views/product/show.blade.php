@@ -45,5 +45,3 @@
     </table>
   </div>
 </div>
-
-@stop
