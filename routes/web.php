@@ -11,6 +11,8 @@ use App\Http\Controllers\UserSalesController;
 use App\Http\Controllers\ProductsStockController;
 use App\Http\Controllers\Report\SaleReportController;
 use App\Http\Controllers\Report\PurchaseReportController;
+use App\Http\Controllers\Report\PaymentReportController;
+use App\Http\Controllers\Report\ReceiptReportController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -89,6 +91,10 @@ Route::get('users/{id}/payments',                               [UserPaymentsCon
 
     Route::get('/reports/sales',[SaleReportController::class , 'index']) ->name('reports.sales');
     Route::get('/reports/purchase',[PurchaseReportController::class , 'index']) ->name('reports.purchase');
+
+    
+    Route::get('/reports/payment',[PaymentReportController::class , 'index']) ->name('reports.payments');
+    Route::get('/reports/receipts',[ReceiptReportController::class , 'index']) ->name('reports.receipts');
 
 
 });

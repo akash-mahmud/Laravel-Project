@@ -7,7 +7,15 @@ use Illuminate\Http\Request;
 use App\Models\PurchaseItem;
 class PurchaseReportController extends Controller
 {
+    public function __construct(){
+
+        parent::__construct();
+        $this->data ['main_menu'] = 'Reports';
+        $this->data ['sub_menu'] = 'Purchase';
+    }
     public function index(Request $request){
+
+        
 
         $this->data ['start_date'] = $request ->get('start_date', date('Y-m-d'));
         $this->data ['end_date'] = $request ->get('end_date', date('Y-m-d'));
